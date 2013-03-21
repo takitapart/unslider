@@ -91,6 +91,12 @@
 			this.opts.fluid && $(window).resize(function() {
 				_.el.css('width', Math.min(Math.round((_.el.outerWidth() / _.el.parent().outerWidth()) * 100), 100) + '%');
 			});
+			// Force first "resize", in case adding first element changed the width, 
+            // say, by adding scrollbars.
+            //  - A fluid-width guy
+            if (this.opts.fluid) {
+                this.el.css('width', Math.min(Math.round((this.el.outerWidth() / this.el.parent().outerWidth()) * 100), 100) + '%');
+            }
 			
 			if(this.opts.arrows) {
 				this.el.parent().append('<p class="arrows"><span class="prev">←</span><span class="next">→</span></p>')
